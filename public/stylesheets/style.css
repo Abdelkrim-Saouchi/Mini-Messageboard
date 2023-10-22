@@ -1,8 +1,81 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: #00b7ff;
 }
 
 a {
-  color: #00B7FF;
+  background-color: #00b7ff;
+  color: white;
+  padding: 0.6em 1.2em;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid white;
+  border-radius: 16px;
+}
+
+a:is(:hover, :focus) {
+  background-color: hsl(197, 100%, 20%);
+}
+
+.messages-board {
+  margin-top: 1em;
+  border: 2px solid black;
+  padding: 1em 4em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.user-message-container {
+  background-color: #00b7ff;
+  color: white;
+  padding: 0.4em 0.8em;
+  border-radius: 18px;
+}
+
+.userName {
+  margin-bottom: 0em;
+}
+
+.message-text {
+  margin-top: 0.4em;
+  font-weight: 600;
+}
+
+.message-date {
+  opacity: 0.9;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6em;
+}
+
+form input {
+  display: block;
+  height: 2em;
+  margin-bottom: 0.6em;
+}
+
+form button {
+  background-color: #00b7ff;
+  color: white;
+  padding: 0.6em 1.2em;
+  font-weight: 600;
+  border: 1px solid white;
+  border-radius: 16px;
+}
+
+a:is(:hover, :focus),
+button:is(:hover, :focus) {
+  background-color: hsl(197, 100%, 20%);
 }
