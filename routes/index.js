@@ -5,7 +5,12 @@ const router = express.Router();
 /* GET home page. */
 router.get('/', async function (req, res, next) {
   // get all messages from db
-  const messages = await Messages.find();
+  let messages = null;
+  try {
+    messages = await Messages.find();
+  } catch (error) {
+    console.log(error);
+  }
   res.render('index', { title: 'Mini MessageBoard', messages: messages });
 });
 
@@ -25,7 +30,11 @@ router.post('/new', async function (req, res, next) {
     added,
   });
   // save record
-  await userMsg.save();
+  try {
+    await userMsg.save();
+  } catch (error) {
+    console.log(error);
+  }
   res.redirect('/');
 });
 

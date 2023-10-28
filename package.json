@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www",
+    "devstart": "nodemon --unhandled-rejections=strict ./bin/www",
     "serverstart": "DEBUG=mini-messageboard:* npm run devstart"
   },
   "dependencies": {
