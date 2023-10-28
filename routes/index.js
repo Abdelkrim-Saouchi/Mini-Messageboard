@@ -1,21 +1,11 @@
 const express = require('express');
+const Messages = require('../models/messages');
 const router = express.Router();
 
-const messages = [
-  {
-    text: 'Hi there!',
-    user: 'Amando',
-    added: new Date(),
-  },
-  {
-    text: 'Hello World!',
-    user: 'Charles',
-    added: new Date(),
-  },
-];
-
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', async function (req, res, next) {
+  // get all messages from db
+  const messages = await Messages.find();
   res.render('index', { title: 'Mini MessageBoard', messages: messages });
 });
 
@@ -24,11 +14,18 @@ router.get('/new', function (req, res, next) {
   res.render('form', { title: 'Send Message' });
 });
 
-router.post('/new', function (req, res, next) {
+router.post('/new', async function (req, res, next) {
   const userName = req.body.userName;
   const userMessage = req.body.userMessage;
   const added = new Date();
-  messages.push({ user: userName, text: userMessage, added });
+  // create document in messages collection
+  const userMsg = new Messages({
+    user: userName,
+    text: userMessage,
+    added,
+  });
+  // save record
+  await userMsg.save();
   res.redirect('/');
 });
 
