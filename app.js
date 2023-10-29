@@ -27,7 +27,6 @@ app.use('/', indexRouter);
 main().catch((error) => console.log(error));
 
 async function main() {
-  console.log('url:', process.env.MONGODB_URL);
   await mongoose.connect(process.env.MONGODB_URL);
 }
 // catch 404 and forward to error handler
